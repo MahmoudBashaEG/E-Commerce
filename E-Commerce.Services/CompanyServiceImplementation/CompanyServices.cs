@@ -27,6 +27,9 @@ namespace E_Commerce.Services.CompanyServiceImplementation
         {
             try
             {
+                if (newCompany is null)
+                    return OperationResult<Company>.Fail(HttpCodes.NotFound, SystemErrors.INVALID_INPUT);
+
                 var company = newCompany.CreateCompanyObjectFromMe();
                 await _companyRepository.Add(company);
                 return OperationResult<Company>.Success(company);
@@ -56,7 +59,7 @@ namespace E_Commerce.Services.CompanyServiceImplementation
                 var currentCompany = await _companyRepository.FindOneAsync(comp => comp.Id == updatedCompany.Id);
 
                 if (currentCompany is null)
-                    return OperationResult<bool>.Fail(HttpCodes.NotFound, SystemErrors.NOT_FOUND);
+                    return OperationResult<bool>.Fail(HttpCodes.NotFound, SystemErrors.COMPANY_NOT_FOUND);
 
                 var company = updatedCompany.CreateCompanyObjectFromMe(currentCompany);
                 await _companyRepository.Update(company);

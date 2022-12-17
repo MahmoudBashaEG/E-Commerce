@@ -32,6 +32,39 @@ namespace E_Commerce.Core.Enums.ErrorCodes
                 };
             }
         }
+        public static SystemErrors COMPANY_NOT_FOUND
+        {
+            get
+            {
+                return new SystemErrors()
+                {
+                    ErrorMessage = nameof(COMPANY_NOT_FOUND),
+                    ErrorNumber = SystemErrorNumbers.COMPANY_NOT_FOUND,
+                };
+            }
+        }
+        public static SystemErrors PRODUCT_NOT_FOUND
+        {
+            get
+            {
+                return new SystemErrors()
+                {
+                    ErrorMessage = nameof(PRODUCT_NOT_FOUND),
+                    ErrorNumber = SystemErrorNumbers.PRODUCT_NOT_FOUND,
+                };
+            }
+        }
+        public static SystemErrors ORDER_NOT_FOUND
+        {
+            get
+            {
+                return new SystemErrors()
+                {
+                    ErrorMessage = nameof(ORDER_NOT_FOUND),
+                    ErrorNumber = SystemErrorNumbers.ORDER_NOT_FOUND,
+                };
+            }
+        }
         public static SystemErrors INTERNAL_SERVER_ERROR
         {
             get
@@ -49,5 +82,8 @@ namespace E_Commerce.Core.Enums.ErrorCodes
         INVALID_INPUT = 1,
         INTERNAL_SERVER_ERROR = 2,
         NOT_FOUND = 3,
+        COMPANY_NOT_FOUND = 4,
+        PRODUCT_NOT_FOUND = 5,
+        ORDER_NOT_FOUND = 6,
     }
 }

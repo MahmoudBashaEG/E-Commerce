@@ -11,8 +11,8 @@ namespace E_Commerce.Core.Services.CompanyServ
 {
     public interface ICompanyService
     {
-        public Task<OperationResult<Company>> AddCompany(AddNewCompanyModel newCompany);
-        public Task<OperationResult<bool>> UpdateCompany(UpdateCompanyModel updatedCompany);
-        public Task<OperationResult<IEnumerable<Company>>> GetAllCompanies();
+        Task<OperationResult<Company>> AddCompany(AddNewCompanyModel newCompany);
+        Task<OperationResult<bool>> UpdateCompany(UpdateCompanyModel updatedCompany);
+        Task<OperationResult<IEnumerable<Company>>> GetAllCompanies();
     }
 }
