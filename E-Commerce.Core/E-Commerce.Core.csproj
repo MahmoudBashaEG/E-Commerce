@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\CompanyDTO\" />
     <Folder Include="DTOs\OrderDTO\" />
     <Folder Include="DTOs\ProductDTO\" />
-    <Folder Include="Entities\OrderEntity\" />
-    <Folder Include="Entities\ProductEntity\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
   </ItemGroup>
 
 </Project>

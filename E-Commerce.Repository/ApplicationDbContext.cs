@@ -1,4 +1,6 @@
 ﻿using E_Commerce.Core.Entities.CompanyEntity;
+using E_Commerce.Core.Entities.OrderEntity;
+using E_Commerce.Core.Entities.ProductEntity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -24,5 +26,7 @@ namespace E_Commerce.Repository
         }
 
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }
