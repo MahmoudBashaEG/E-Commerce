@@ -1,4 +1,6 @@
+using E_Commerce.Core.Repository.CrossCuttingRepository;
 using E_Commerce.Repository;
+using E_Commerce.Repository.Repositories.CrossCuttingRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
 });
+builder.Services.AddTransient(typeof(ICrossCuttingRepository<>), typeof(CrossCuttingRepository<>));
 
 var app = builder.Build();
 

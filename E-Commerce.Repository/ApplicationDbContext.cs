@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using E_Commerce.Core.Entities.CompanyEntity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,7 @@ namespace E_Commerce.Repository
         {
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<Company> Companies { get; set; }
     }
 }
