@@ -76,6 +76,28 @@ namespace E_Commerce.Core.Enums.ErrorCodes
                 };
             }
         }
+        public static SystemErrors YOU_CAN_NOT_MAKE_ORDER_BECAUSE_COMPANY_STATUS_NOT_APPROVED
+        {
+            get
+            {
+                return new SystemErrors()
+                {
+                    ErrorMessage = nameof(YOU_CAN_NOT_MAKE_ORDER_BECAUSE_COMPANY_STATUS_NOT_APPROVED),
+                    ErrorNumber = SystemErrorNumbers.YOU_CAN_NOT_MAKE_ORDER_BECAUSE_COMPANY_STATUS_NOT_APPROVED,
+                };
+            }
+        }
+        public static SystemErrors YOU_CAN_NOT_MAKE_ORDER_BECAUSE_COMPANY_IS_CLOSED_NOW
+        {
+            get
+            {
+                return new SystemErrors()
+                {
+                    ErrorMessage = nameof(YOU_CAN_NOT_MAKE_ORDER_BECAUSE_COMPANY_IS_CLOSED_NOW),
+                    ErrorNumber = SystemErrorNumbers.YOU_CAN_NOT_MAKE_ORDER_BECAUSE_COMPANY_IS_CLOSED_NOW,
+                };
+            }
+        }
     }
     public enum SystemErrorNumbers
     {
@@ -85,5 +107,7 @@ namespace E_Commerce.Core.Enums.ErrorCodes
         COMPANY_NOT_FOUND = 4,
         PRODUCT_NOT_FOUND = 5,
         ORDER_NOT_FOUND = 6,
+        YOU_CAN_NOT_MAKE_ORDER_BECAUSE_COMPANY_STATUS_NOT_APPROVED = 7,
+        YOU_CAN_NOT_MAKE_ORDER_BECAUSE_COMPANY_IS_CLOSED_NOW = 8,
     }
 }

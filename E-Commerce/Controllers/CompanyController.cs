@@ -1,5 +1,6 @@
 ﻿using E_Commerce.Core.API;
 using E_Commerce.Core.DTOs.CompanyDTO;
+using E_Commerce.Core.Entities.CompanyEntity;
 using E_Commerce.Core.Enums.ErrorCodes;
 using E_Commerce.Core.Services.CompanyServ;
 using Microsoft.AspNetCore.Http;
@@ -19,8 +20,8 @@ namespace E_Commerce.Controllers
         }
 
         [HttpPost("AddCompany")]
-        [ProducesResponseType(typeof(bool), (int)HttpCodes.Succeded)]
-        [ProducesResponseType(typeof(bool), (int)HttpCodes.ServerError)]
+        [ProducesResponseType(typeof(Company), (int)HttpCodes.Succeded)]
+        [ProducesResponseType(typeof(Company), (int)HttpCodes.ServerError)]
         public async Task<IActionResult> AddCompany([FromBody] AddNewCompanyModel model)
         {
             if (!ModelState.IsValid)
@@ -31,8 +32,8 @@ namespace E_Commerce.Controllers
         }
 
         [HttpGet("GetAllCompanies")]
-        [ProducesResponseType(typeof(bool), (int)HttpCodes.Succeded)]
-        [ProducesResponseType(typeof(bool), (int)HttpCodes.ServerError)]
+        [ProducesResponseType(typeof(IEnumerable<Company>), (int)HttpCodes.Succeded)]
+        [ProducesResponseType(typeof(IEnumerable<Company>), (int)HttpCodes.ServerError)]
         public async Task<IActionResult> GetAllCompanies()
         {
             if (!ModelState.IsValid)

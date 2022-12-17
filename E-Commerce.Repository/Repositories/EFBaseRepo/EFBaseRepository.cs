@@ -52,17 +52,36 @@ namespace E_Commerce.Repository.Repositories.EFBaseRepository
             await _context.SaveChangesAsync();
         }
 
-        public IQueryable<T> Find(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> Find(Expression<Func<T, bool>> predicate, params string[] includes)
         {
-            return _dbSet.AsNoTracking().AsQueryable().Where(predicate);
+            var iq = _dbSet.AsQueryable().AsNoTracking();
+            foreach (var item in includes)
+                iq = iq.Include(item);
+
+            iq = iq.Where(predicate);
+
+            return iq;
         }
-        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate, params string[] includes)
         {
-            return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
+            var iq = _dbSet.AsQueryable();
+
+            foreach (var item in includes)
+                iq = iq.Include(item);
+
+            return await iq.AsNoTracking().Where(predicate).ToListAsync();
         }
-        public async Task<T> FindOneAsync(Expression<Func<T, bool>> predicate)
+        public async Task<T> FindOneAsync(Expression<Func<T, bool>> predicate, params string[] includes)
         {
-            return await _dbSet.AsNoTracking().FirstOrDefaultAsync(predicate);
+            var iq = _dbSet.AsQueryable().AsNoTracking();
+
+            foreach (var item in includes)
+                iq = iq.Include(item);
+
+            iq = iq.Where(predicate);
+
+            var res = await iq.ToListAsync();
+            return res.Count > 0 ? res.FirstOrDefault() : null;
         }
 
     }

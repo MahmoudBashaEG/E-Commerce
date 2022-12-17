@@ -15,9 +15,10 @@ namespace E_Commerce.Core.Entities.CompanyEntity
         public string CompanyName { get; set; } = "";
         public CompanyApproveStatus CompanyStatus { get; set; }
         public short StartingHour { get; set; }
+        public short StartingMinute { get; set; }
         public short EndingHour { get; set; }
+        public short EndingMinute { get; set; }
         public IEnumerable<Product> Product { get; set; }
-        public IEnumerable<Order> Orders { get; set; }
 
     }
 }

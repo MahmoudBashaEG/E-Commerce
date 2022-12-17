@@ -21,7 +21,13 @@ namespace E_Commerce.Core.DTOs.CompanyDTO
         public short StartingHour { get; set; }
 
         [Required]
+        public short StartingMinute { get; set; }
+
+        [Required]
         public short EndingHour { get; set; }
+
+        [Required]
+        public short EndingMinute { get; set; }
 
         public Company CreateCompanyObjectFromMe()
         {
@@ -30,7 +36,9 @@ namespace E_Commerce.Core.DTOs.CompanyDTO
                 CompanyName = this.CompanyName,
                 CompanyStatus = this.CompanyStatus,
                 EndingHour = this.EndingHour,
+                EndingMinute = this.EndingMinute,
                 StartingHour = this.StartingHour,
+                StartingMinute = this.StartingMinute
             };
         }
     }

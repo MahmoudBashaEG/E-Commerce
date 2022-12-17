@@ -16,6 +16,5 @@ namespace E_Commerce.Core.Entities.ProductEntity
         public double Price { get; set; }
         public Company Company { get; set; }
         public int CompanyId { get; set; }
-        public IEnumerable<Order> Orders { get; set; }
     }
 }

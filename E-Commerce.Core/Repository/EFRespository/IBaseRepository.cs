@@ -13,8 +13,8 @@ namespace E_Commerce.Core.Repository.EFRespository
         public Task Delete(T entity);
         public Task DeleteRange(IEnumerable<T> entities);
 
-        public Task<T> FindOneAsync(Expression<Func<T, bool>> predicate);
-        public Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate);
-        public IQueryable<T> Find(Expression<Func<T, bool>> predicate);
+        public Task<T> FindOneAsync(Expression<Func<T, bool>> predicate, params string[] includes);
+        public Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate, params string[] includes);
+        public IQueryable<T> Find(Expression<Func<T, bool>> predicate, params string[] includes);
     }
 }

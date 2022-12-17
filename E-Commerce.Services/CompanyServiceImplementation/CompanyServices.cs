@@ -30,6 +30,10 @@ namespace E_Commerce.Services.CompanyServiceImplementation
                 if (newCompany is null)
                     return OperationResult<Company>.Fail(HttpCodes.NotFound, SystemErrors.INVALID_INPUT);
 
+                var res = this.IsHourAndMinuteValid(newCompany.StartingMinute, newCompany.StartingHour, newCompany.EndingMinute, newCompany.EndingHour);
+                if(!res)
+                    return OperationResult<Company>.Fail(HttpCodes.NotFound, SystemErrors.INVALID_INPUT);
+
                 var company = newCompany.CreateCompanyObjectFromMe();
                 await _companyRepository.Add(company);
                 return OperationResult<Company>.Success(company);
@@ -61,6 +65,10 @@ namespace E_Commerce.Services.CompanyServiceImplementation
                 if (currentCompany is null)
                     return OperationResult<bool>.Fail(HttpCodes.NotFound, SystemErrors.COMPANY_NOT_FOUND);
 
+                var res = this.IsHourAndMinuteValid(updatedCompany.StartingMinute, updatedCompany.StartingHour, updatedCompany.EndingMinute, updatedCompany.EndingHour);
+                if (!res)
+                    return OperationResult<bool>.Fail(HttpCodes.NotFound, SystemErrors.INVALID_INPUT);
+
                 var company = updatedCompany.CreateCompanyObjectFromMe(currentCompany);
                 await _companyRepository.Update(company);
 
@@ -70,6 +78,17 @@ namespace E_Commerce.Services.CompanyServiceImplementation
             {
                 return OperationResult<bool>.Fail(HttpCodes.ServerError, SystemErrors.INTERNAL_SERVER_ERROR, ex.ToString());
             }
+        }
+
+        private bool IsHourAndMinuteValid(int StartingMinute,int StartingHour,int EndingMinute,int EndingHour)
+        {
+            bool validateStartingHour = StartingHour >= 0 && StartingHour <= 23;
+            bool validateEndingHour = EndingHour >= 0 && EndingHour <= 23;
+
+            bool validateStartingMinute = StartingMinute >= 0 && StartingMinute <= 59;
+            bool validateEndingMinute = EndingMinute >= 0 && EndingMinute <= 59;
+
+            return (validateStartingHour && validateStartingMinute && validateEndingHour && validateEndingMinute);
         }
     }
 }
